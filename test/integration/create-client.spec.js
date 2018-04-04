@@ -12,15 +12,21 @@ describe('AsyncRedis.createClient', function () {
   it('should create using constructor syntax', async () => {
     const asyncRedisClient = new AsyncRedis(options);
     assert.instanceOf(asyncRedisClient, RedisClient);
+    assert(asyncRedisClient.connection_options.host === options.host);
+    assert(asyncRedisClient.connection_options.port === options.port);
   });
 
   it('should create using url syntax', async () => {
     const asyncRedisClient = AsyncRedis.createClient(url);
     assert.instanceOf(asyncRedisClient, RedisClient);
+    assert(asyncRedisClient.connection_options.host === options.host);
+    assert(asyncRedisClient.connection_options.port === options.port);
   });
 
   it('should create using options', async () => {
     const asyncRedisClient = AsyncRedis.createClient(options);
     assert.instanceOf(asyncRedisClient, RedisClient);
+    assert(asyncRedisClient.connection_options.host === options.host);
+    assert(asyncRedisClient.connection_options.port === options.port);
   });
 });
